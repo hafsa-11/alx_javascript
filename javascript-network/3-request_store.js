@@ -1,9 +1,7 @@
-// Importing the request module
 const request = require('request');
-// Importing the file system module
 const fs = require('fs');
 
-// Function to get the contents of a webpage and store it in a file
+// Function to retrieve the contents of a webpage and store it in a file
 function requestAndStore(url, filePath) {
     // Sending a GET request to the URL
     request.get(url, function(error, response, body) {
