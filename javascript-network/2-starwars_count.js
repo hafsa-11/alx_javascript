@@ -9,18 +9,25 @@ function countMoviesWithWedgeAntilles(apiUrl) {
             console.error('Error:', error);
         } else {
             // Parsing the response body to extract movie data
-            const movies = JSON.parse(body);
+            const data = JSON.parse(body);
 
-            // Counting the number of movies where Wedge Antilles is present
-            let count = 0;
-            movies.forEach(movie => {
-                if (movie.characters.includes("https://swapi-api.alx-tools.com/api/people/18/")) {
-                    count++;
-                }
-            });
+            // Check if the response body is an object and contains results
+            if (data && data.results && Array.isArray(data.results)) {
+                const movies = data.results;
 
-            // Printing the count
-            console.log(count);
+                // Counting the number of movies where Wedge Antilles is present
+                let count = 0;
+                movies.forEach(movie => {
+                    if (movie.characters.includes("https://swapi-api.alx-tools.com/api/people/18/")) {
+                        count++;
+                    }
+                });
+
+                // Printing the count
+                console.log(count);
+            } else {
+                console.error('Invalid response format');
+            }
         }
     });
 }
