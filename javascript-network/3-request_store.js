@@ -1,7 +1,7 @@
 const request = require('request');
 const fs = require('fs');
 
-// Function to retrieve the contents of a webpage and store it in a file
+// Function to get the contents of a webpage and store it in a file
 function requestAndStore(url, filePath) {
     // Sending a GET request to the URL
     request.get(url, function(error, response, body) {
