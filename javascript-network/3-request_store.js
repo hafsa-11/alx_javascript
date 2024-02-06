@@ -16,6 +16,16 @@ function requestAndStore(url, fileName) {
                 return;
             }
             console.log('File saved successfully:', fileName);
+
+            // Print the content of the file for verification
+            fs.readFile(fileName, 'utf-8', function(err, data) {
+                if (err) {
+                    console.error('Error reading file:', err);
+                    return;
+                }
+                console.log('File content:');
+                console.log(data);
+            });
         });
     });
 }
@@ -26,4 +36,3 @@ const fileName = process.argv[3];
 
 // Calling the function with provided URL and file name
 requestAndStore(url, fileName);
-
