@@ -1,4 +1,3 @@
-/// Importing the request module
 const request = require('request');
 
 // Function to count the number of movies where the character "Wedge Antilles" is present
@@ -9,13 +8,13 @@ function countMoviesWithWedgeAntilles(apiUrl) {
             // If there's an error, print it
             console.error('Error:', error);
         } else {
-            // Parsing the response body to extract information about the movies
-            const films = JSON.parse(body).results;
+            // Parsing the response body to extract movie data
+            const movies = JSON.parse(body);
 
-            // Counting the number of movies where "Wedge Antilles" is present
+            // Counting the number of movies where Wedge Antilles is present
             let count = 0;
-            films.forEach(movie => {
-                if (movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18')) {
+            movies.forEach(movie => {
+                if (movie.characters.includes("https://swapi-api.alx-tools.com/api/people/18/")) {
                     count++;
                 }
             });
